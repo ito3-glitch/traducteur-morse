@@ -94,4 +94,5 @@ def traduction(phrase, alphabet_morse, alphabet_normal):
         phrase_traduction += dico[lettre]
     return phrase_traduction
 
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
