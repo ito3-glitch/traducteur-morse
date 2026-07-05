@@ -1,0 +1,14 @@
+<html>
+  <body>
+    <h1>Traducteur Morse</h1>
+
+    <form method="POST" action="">
+      <input type="text" name="saisie" placeholder="Tape ta phrase ici">
+      <button>Traduire</button>
+    </form>
+     {% if resultat %}
+   <p>Résultat : {{ resultat }}</p>
+ {% endif %}
+
+  </body>
+</html> 
