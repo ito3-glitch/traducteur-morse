@@ -1,14 +1,33 @@
 <html>
+  <head>
+    <style>
+      h1 {
+        font-size : 40px;
+      }
+      h2 {
+        font-size : 18px;
+      }
+      h3 {
+        font-size : 14px;
+      }
+    </style>
+  </head>
   <body>
     <h1>Traducteur Morse</h1>
+    <h2>Si vous voulez rentrer du morse veuillez séparer les lettres d'un espace</h2>
 
     <form method="POST" action="">
       <input type="text" name="saisie" placeholder="Tape ta phrase ici">
       <button>Traduire</button>
     </form>
+    <h3>voici l'alphabet avec les lettres normals à gauche et la version morse à droite</h3>
      {% if resultat %}
    <p>Résultat : {{ resultat }}</p>
  {% endif %}
-
+      {% for cle, valeur in alphabet_morse.items() %}
+      {% if valeur not in [",", " ", "'"] %}
+    <p>{{valeur}} : {{cle}}</p>
+     {% endif %}
+     {% endfor %}
   </body>
 </html> 

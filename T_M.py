@@ -78,7 +78,7 @@ def accueil():
         saisie = request.form["saisie"].lower()
         phrase = saisie.split(" ")
         resultat = traduction(phrase, alphabet_normal, alphabet_morse)
-    return render_template("index.html", resultat=resultat)
+    return render_template("index.html", resultat=resultat, alphabet_morse=alphabet_morse)
 
 
 def traduction(phrase, alphabet_normal, alphabet_morse):
