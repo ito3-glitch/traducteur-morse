@@ -77,22 +77,28 @@ def accueil():
     if request.method == "POST":
         saisie = request.form["saisie"].lower()
         phrase = saisie.split(" ")
-        resultat = traduction(phrase, alphabet_morse, alphabet_normal)
+        resultat = traduction(phrase, alphabet_normal, alphabet_morse)
     return render_template("index.html", resultat=resultat)
 
 
-def traduction(phrase, alphabet_morse, alphabet_normal):
+def traduction(phrase, alphabet_normal, alphabet_morse):
 
     phrase_traduction = ""
 
     if "-" in "".join(phrase) or "." in "".join(phrase):
         dico = alphabet_morse
+
     else:
         phrase = "".join(phrase)
         dico = alphabet_normal
 
     for lettre in phrase:
-        phrase_traduction += dico[lettre]
+        
+        try:
+            phrase_traduction += dico[lettre]
+        except KeyError:
+            return "caractère non reconu"
+
     return phrase_traduction
 
 if __name__ == "__main__":
