@@ -76,7 +76,7 @@ def accueil():
     resultat = None
     if request.method == "POST":
         saisie = request.form["saisie"].lower()
-        phrase = saisie.split(",")
+        phrase = saisie.split(" ")
         resultat = traduction(phrase, alphabet_morse, alphabet_normal)
     return render_template("index.html", resultat=resultat)
 
@@ -88,6 +88,7 @@ def traduction(phrase, alphabet_morse, alphabet_normal):
     if "-" in "".join(phrase) or "." in "".join(phrase):
         dico = alphabet_morse
     else:
+        phrase = "".join(phrase)
         dico = alphabet_normal
 
     for lettre in phrase:
